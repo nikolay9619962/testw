@@ -33,7 +33,6 @@ int					vct_delpart(t_vector *vct, unsigned int i,
 					unsigned int len);
 void				vct_destroy(t_vector **vct);
 void				vct_dprint(t_vector *vct, int fd);
-void				vct_dprintendl(t_vector *vct, int fd);
 char				vct_gnc(t_vector *vct);
 int					vct_gnl(int fd, t_vector **vct);
 int					vct_insertstr(t_vector *vct, char *str, int index);

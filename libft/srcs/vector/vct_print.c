@@ -27,9 +27,3 @@ void	vct_dprint(t_vector *vct, int fd)
 {
 	write(fd, vct->value, vct->len);
 }
-
-void	vct_dprintendl(t_vector *vct, int fd)
-{
-	write(fd, vct->value, vct->len);
-	ft_putchar_fd('\n', fd);
-}
