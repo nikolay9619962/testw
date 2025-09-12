@@ -13,13 +13,14 @@
 #ifndef WOODY_H
 # define WOODY_H
 
-# include "libft.h"
 # include <errno.h>
 # include <fcntl.h>
 # include <sys/mman.h>
 # include <sys/syscall.h>
 # include <stdio.h>
 # include <elf.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef uint16_t	t_arch;
 typedef uint16_t	t_endian;
@@ -93,5 +94,13 @@ void				encrypt_code(t_file *file);
 int					check_file(char *filename, t_file *file);
 void				woody_error(t_file *file, t_payload *payload,
 						t_woody *woody, int code);
+
+size_t			ft_strlen(const char *s);
+void			ft_strdel(char **as);
+void	ft_putstr(const char *s);
+
+void			*ft_memset(void *b, int c, size_t len);
+void			*ft_memcpy(void *dst, const void *src, size_t n);
+int				ft_memcmp(const void *s1, const void *s2, size_t n);
 
 #endif
