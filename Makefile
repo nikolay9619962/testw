@@ -1,32 +1,67 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: alagroy- <alagroy-@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/04/23 13:46:17 by alagroy-          #+#    #+#              #
+#    Updated: 2021/05/28 15:16:12 by alagroy-         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = woody_woodpacker
+
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fno-stack-protector -z execstack -g
-ASM = nasm
-ASMFLAGS = -f elf64 -g
+CFLAGS = -Wall -Werror -Wextra -g #-fsanitize=address
+CFLAGS += $(addprefix -I , $(INCLUDES))
+NASM = nasm -f elf64
 
-SRC = $(wildcard src/*.c)
-OBJ = $(SRC:.c=.o)
-ASM_SRC = $(wildcard asm/*.s)
-ASM_OBJ = $(ASM_SRC:.s=.o)
-HEADERS = src/woody.h
+INCLUDES_DIR = ./includes/
+LIB_DIR = ./libft/
+SRCS_DIR = ./srcs/
+INCLUDES = $(INCLUDES_DIR) $(LIB_DIR)includes/
+OBJS_DIR = ./.objs/
+LIBFT = $(LIB_DIR)libft.a
 
-all: $(NAME)
+SRC_FILES = main.c check_file.c error.c endian.c encryption.c segment.c injection.c
+ASM_FILES = encrypt.s
+OBJ_FILES = $(SRC_FILES:.c=.o)
+OBJ_FILES += $(ASM_FILES:.s=.o)
+OBJS = $(addprefix $(OBJS_DIR), $(OBJ_FILES))
+HEADERS = $(INCLUDES_DIR)woody.h
 
-$(NAME): $(OBJ) $(ASM_OBJ)
-	$(CC) $(CFLAGS) -o $@ $^ -no-pie
+all: $(OBJS_DIR) $(NAME)
 
-%.o: %.c $(HEADERS)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME): $(LIBFT) $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) -L $(LIB_DIR) -lft 
+	printf "\n\033[0;32m[$(NAME)] Linking [OK]\n\033[0;0m"
 
-%.o: %.s
-	$(ASM) $(ASMFLAGS) $< -o $@
+$(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(HEADERS) Makefile
+	$(CC) $(CFLAGS) -o $@ -c $<
+	printf "\033[0;32m[$(NAME)] Compilation [$<]                 \r\033[0m"
+
+$(OBJS_DIR)%.o: $(SRCS_DIR)%.s $(HEADERS) Makefile
+	$(NASM) -o $@ $<
+	printf "\033[0;32m[$(NAME)] Compilation [$<]                 \r\033[0m"
+
+$(LIBFT):
+	make -C $(LIB_DIR)
+
+$(OBJS_DIR):
+	mkdir -p $@
 
 clean:
-	rm -f $(OBJ) $(ASM_OBJ)
+	$(RM) -Rf $(OBJS_DIR)
+	make -C $(LIB_DIR) $@
+	printf "\033[0;31m[$(NAME)] Clean [OK]\n"
 
 fclean: clean
-	rm -f $(NAME) woody
+	$(RM) $(NAME)
+	make -C $(LIB_DIR) $@
+	printf "\033[0;31m[$(NAME)] Fclean [OK]\n"
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: clean re fclean all
+.SILENT:
