@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   check_file.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: alagroy- <alagroy-@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/26 12:10:25 by alagroy-          #+#    #+#             */
-/*   Updated: 2021/04/29 12:07:33 by alagroy-         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "woody.h"
 
@@ -45,6 +34,9 @@ int			check_file(char *filename, t_file *file)
 	if ((file->ptr = mmap(NULL, file->size, PROT_READ | PROT_WRITE,
 			MAP_PRIVATE, file->fd, 0)) == MAP_FAILED)
 		return (EXIT_FAILURE);
+	// if (file->arch != ELFCLASS64)
+	// 	return (EXIT_FAILURE);
 	file->end = file->ptr + file->size;
+	// if (file->arch
 	return (parse_header(file));
 }

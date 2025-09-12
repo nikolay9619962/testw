@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: alagroy- <alagroy-@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/26 13:57:32 by alagroy-          #+#    #+#             */
-/*   Updated: 2021/06/08 13:48:44 by alagroy-         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "woody.h"
 
 static char	*g_error_messages[] =\
@@ -18,7 +6,6 @@ static char	*g_error_messages[] =\
 	"program headers extends past the end of the file.",
 	"text segment extends past the end of the file.",
 	"Wrong number of arguments.\n\tusage: ./woody_woodpacker filename",
-	
 };
 
 static void	print_error_message(int code)
