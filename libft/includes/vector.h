@@ -24,9 +24,6 @@ typedef struct		s_vector
 	int		scale;
 }					t_vector;
 
-int					vct_append(t_vector *vct, char c);
-void				vct_apply(t_vector *vct, t_func f);
-int					vct_cat(t_vector *vct, t_vector *cat);
 ssize_t				vct_chr(t_vector *vct, char c);
 t_vector			*vct_create(int len);
 int					vct_delpart(t_vector *vct, unsigned int i,
@@ -34,27 +31,15 @@ int					vct_delpart(t_vector *vct, unsigned int i,
 void				vct_destroy(t_vector **vct);
 void				vct_dprint(t_vector *vct, int fd);
 char				vct_gnc(t_vector *vct);
-int					vct_gnl(int fd, t_vector **vct);
-int					vct_insertstr(t_vector *vct, char *str, int index);
 int					vct_nappend(t_vector *vct, char c, int n);
-int					vct_ncmp(t_vector *vct, t_vector *cmp, unsigned int n);
-int					vct_npush(t_vector *vct, char c, unsigned int n);
 void				vct_print(t_vector *vct);
 void				vct_printendl(t_vector *vct);
-int					vct_push(t_vector *vct, char c);
 ssize_t				vct_rchr(t_vector *vct, char c);
-int					vct_read_file(int fd, t_vector *vct);
 int					vct_realloc(t_vector *vct);
-void				vct_replace(t_vector *vct, char c, char replace);
 void				vct_rev(t_vector *vct);
-t_vector			*vct_split(t_vector *vct, char c);
-int					vct_strcat(t_vector *vct, char *str);
 int					vct_strcpy(t_vector *vct, char *str);
 t_vector			*vct_strdup(char *str);
-int					vct_strncat(t_vector *vct, char *str, unsigned int len);
 int					vct_strncpy(t_vector *vct, char *str, unsigned int len);
-int					vct_strpush(t_vector *vct, char *str);
-int					vct_strreplace(t_vector *vct, char *s, char *replace);
 ssize_t				vct_strstr(t_vector *vct, char *s);
 t_vector			*vct_sub(t_vector *vct, int i, int len);
 int					vct_vctcpy(t_vector *vct, t_vector *cpy);

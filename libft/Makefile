@@ -28,10 +28,10 @@ SRCS = ft_strcat.c ft_strchr.c ft_strcmp.c ft_strcpy.c ft_strdup.c \
 	   ft_strupcase.c ft_strndup.c  \
 	   ft_str2ddel.c ft_strreplace.c \
 	   ft_strichr.c ft_strirchr.c \
-	   vct_create.c vct_destroy.c vct_strdup.c vct_print.c vct_cat.c vct_realloc.c \
-	   vct_vctdup.c vct_insertstr.c vct_strcpy.c vct_sub.c vct_delpart.c \
-	   vct_replace.c vct_strstr.c vct_cmp.c vct_gnl.c vct_append.c vct_chr.c \
-	   vct_split.c vct_rev.c vct_push.c vct_apply.c vct_gnc.c
+	   vct_create.c vct_destroy.c vct_strdup.c vct_print.c vct_realloc.c \
+	   vct_vctdup.c vct_strcpy.c vct_sub.c vct_delpart.c \
+	   vct_strstr.c   vct_chr.c \
+	  vct_rev.c  vct_gnc.c
 
 OBJ = $(patsubst %.c, $(OBJ_PATH)%.o, $(SRCS))
 
