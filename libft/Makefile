@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = libft.a
-
+ 
 CC = gcc
 
 SRCS = ft_strcat.c ft_strchr.c ft_strcmp.c ft_strcpy.c ft_strdup.c \
@@ -24,12 +24,12 @@ SRCS = ft_strcat.c ft_strchr.c ft_strcmp.c ft_strcpy.c ft_strdup.c \
 	   ft_itoa.c ft_putchar.c ft_putstr.c ft_putendl.c ft_putnbr.c ft_putchar_fd.c \
 	   ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putull.c ft_memset.c ft_bzero.c \
 	   ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memcmp.c \
-	   ft_memalloc.c ft_memdel.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c \
-	   ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_lstsort.c ft_strrev.c ft_strlowcase.c \
-	   ft_strupcase.c ft_strndup.c ft_lstsize.c ft_lstend.c ft_lstmid.c \
+	   ft_memalloc.c ft_memdel.c  \
+	   ft_strrev.c ft_strlowcase.c \
+	   ft_strupcase.c ft_strndup.c  \
 	    aux.c edit_string.c fill_content.c flags.c ft_printf.c \
 	   itoa.c precision_min_size.c tools.c  \
-	   ft_str2ddel.c ft_strreplace.c ft_print_strlist.c \
+	   ft_str2ddel.c ft_strreplace.c \
 	   ft_strichr.c ft_strirchr.c \
 	   vct_create.c vct_destroy.c vct_strdup.c vct_print.c vct_cat.c vct_realloc.c \
 	   vct_vctdup.c vct_insertstr.c vct_strcpy.c vct_sub.c vct_delpart.c \
