@@ -97,7 +97,7 @@ void				woody_error(t_file *file, t_payload *payload,
 
 size_t			ft_strlen(const char *s);
 void			ft_strdel(char **as);
-void	ft_putstr(const char *s);
+void			ft_putstr(const char *s);
 
 void			*ft_memset(void *b, int c, size_t len);
 void			*ft_memcpy(void *dst, const void *src, size_t n);

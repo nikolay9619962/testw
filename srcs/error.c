@@ -18,6 +18,7 @@ static char	*g_error_messages[] =\
 	"program headers extends past the end of the file.",
 	"text segment extends past the end of the file.",
 	"Wrong number of arguments.\n\tusage: ./woody_woodpacker filename",
+	
 };
 
 static void	print_error_message(int code)

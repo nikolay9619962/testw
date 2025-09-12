@@ -32,17 +32,16 @@ HEADERS = $(INCLUDES_DIR)woody.h
 all: $(OBJS_DIR) $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^
 	printf "\n\033[0;32m[$(NAME)] Linking [OK]\n\033[0;0m"
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(HEADERS) Makefile
 	$(CC) $(CFLAGS) -o $@ -c $<
-	printf "\033[0;32m[$(NAME)] Compilation [$<]                 \r\033[0m"
+	printf "\033[0;34m[$(NAME)] Compilation [$<]\n"
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.s $(HEADERS) Makefile
 	$(NASM) -o $@ $<
-	printf "\033[0;32m[$(NAME)] Compilation [$<]                 \r\033[0m"
-
+	printf "\033[0;34m[$(NAME)] Compilation ASM [$<]\n"
 
 $(OBJS_DIR):
 	mkdir -p $@
