@@ -27,15 +27,10 @@ SRCS = ft_strcat.c ft_strchr.c ft_strcmp.c ft_strcpy.c ft_strdup.c \
 	   ft_strrev.c ft_strlowcase.c \
 	   ft_strupcase.c ft_strndup.c  \
 	   ft_str2ddel.c ft_strreplace.c \
-	   ft_strichr.c ft_strirchr.c \
-	   vct_create.c vct_destroy.c vct_strdup.c vct_print.c vct_realloc.c \
-	   vct_vctdup.c vct_strcpy.c vct_sub.c vct_delpart.c \
-	   vct_strstr.c   vct_chr.c \
-	  vct_rev.c  vct_gnc.c
+	   ft_strichr.c ft_strirchr.c
 
 OBJ = $(patsubst %.c, $(OBJ_PATH)%.o, $(SRCS))
 
-vpath %.c srcs/vector/
 vpath %.c srcs/2dstr/
 vpath %.c srcs/str/
 vpath %.c srcs/mem/
@@ -47,7 +42,6 @@ CFLAGS = -Wall -Werror -Wextra #-g -fsanitize=address
 
 INCLUDES = ./includes/
 HEADER += $(INCLUDES)libft.h 
-HEADER += $(INCLUDES)vector.h 
 
 
 OBJ_PATH = ./.obj/
