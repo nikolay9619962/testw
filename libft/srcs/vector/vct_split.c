@@ -25,18 +25,3 @@ t_vector	*vct_split(t_vector *vct, char c)
 	vct_delpart(vct, 0, i + 1);
 	return (rtrn);
 }
-
-t_vector	*vct_strsplit(t_vector *vct, char *str)
-{
-	ssize_t		i;
-	t_vector	*rtrn;
-
-	i = vct_strstr(vct, str);
-	ft_printf("i = %d\n", i);
-	if (i == -1)
-		return (NULL);
-	if (!(rtrn = vct_sub(vct, 0, i)))
-		return (NULL);
-	vct_delpart(vct, 0, i + ft_strlen(str));
-	return (rtrn);
-}

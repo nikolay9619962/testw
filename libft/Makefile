@@ -21,13 +21,11 @@ SRCS = ft_strcat.c ft_strchr.c ft_strcmp.c ft_strcpy.c ft_strdup.c \
 	   ft_tolower.c ft_strnew.c ft_strdel.c ft_strclr.c ft_striter.c \
 	   ft_striteri.c ft_strmap.c ft_strmapi.c ft_strequ.c ft_strnequ.c \
 	   ft_strsub.c  ft_strjoin.c ft_strtrim.c ft_strsplit.c \
-	   ft_itoa.c ft_putchar.c ft_putstr.c  \
+	    ft_putchar.c ft_putstr.c  \
 	   ft_memset.c \
 	   ft_memcpy.c ft_memcmp.c \
 	   ft_strrev.c ft_strlowcase.c \
 	   ft_strupcase.c ft_strndup.c  \
-	    aux.c edit_string.c fill_content.c flags.c ft_printf.c \
-	   itoa.c precision_min_size.c tools.c  \
 	   ft_str2ddel.c ft_strreplace.c \
 	   ft_strichr.c ft_strirchr.c \
 	   vct_create.c vct_destroy.c vct_strdup.c vct_print.c vct_cat.c vct_realloc.c \
@@ -44,13 +42,11 @@ vpath %.c srcs/mem/
 vpath %.c srcs/print/
 vpath %.c srcs/lst/
 vpath %.c srcs/gnl/
-vpath %.c srcs/printf/
 
 CFLAGS = -Wall -Werror -Wextra #-g -fsanitize=address
 
 INCLUDES = ./includes/
 HEADER += $(INCLUDES)libft.h 
-HEADER += $(INCLUDES)ft_printf.h 
 HEADER += $(INCLUDES)vector.h 
 
 

@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-# include "ft_printf.h"
 
 # ifndef OPEN_MAX
 #  define OPEN_MAX 4096

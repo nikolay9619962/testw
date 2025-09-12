@@ -55,7 +55,6 @@ int					vct_strncat(t_vector *vct, char *str, unsigned int len);
 int					vct_strncpy(t_vector *vct, char *str, unsigned int len);
 int					vct_strpush(t_vector *vct, char *str);
 int					vct_strreplace(t_vector *vct, char *s, char *replace);
-t_vector			*vct_strsplit(t_vector *vct, char *c);
 ssize_t				vct_strstr(t_vector *vct, char *s);
 t_vector			*vct_sub(t_vector *vct, int i, int len);
 int					vct_vctcpy(t_vector *vct, t_vector *cpy);
