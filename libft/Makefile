@@ -14,7 +14,7 @@ NAME = libft.a
  
 CC = gcc
 
-SRCS = ft_strdel.c ft_strlen.c ft_putchar.c ft_putstr.c  \
+SRCS = ft_strdel.c ft_strlen.c ft_putstr.c  \
 	   ft_memset.c \
 	   ft_memcpy.c ft_memcmp.c
 

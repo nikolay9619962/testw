@@ -26,7 +26,7 @@ static void	get_key(t_file *file)
 	while (++i < KEY_SIZE)
 		printf("%02hhx", file->key[i]);
 	fflush(NULL);
-	ft_putchar('\n');
+	ft_putstr("\n");
 }
 
 static void	encrypt_code_32(t_file *file)
