@@ -35,7 +35,7 @@ int					main(int ac, char **av)
 	t_file		file;
 	t_payload	payload;
 
-	ft_bzero(&file, sizeof(t_file));
+	ft_memset(&file, 0, sizeof(t_file));
 	errno = 0;
 	if (ac != 2 || check_file(av[1], &file) == EXIT_FAILURE)
 		woody_error(&file, NULL, NULL, !errno ? ERROR_ARGS : ERROR_ERRNO);

@@ -20,7 +20,7 @@ t_vector	*vct_create(int len)
 		return (NULL);
 	if (!(vct->value = ft_strnew(len)))
 		return (NULL);
-	ft_bzero(vct->value, len);
+	ft_memset(vct->value, 0, len);
 	vct->len = len;
 	vct->scale = 0;
 	vct->size = 0;

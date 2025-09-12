@@ -86,7 +86,7 @@ static void		create_woody_32(t_file *file, t_woody *woody, size_t *inject_index)
 	if (woody->data_32 && get_uint32(woody->data_32->p_filesz, file->endian)
 		!= get_uint32(woody->data_32->p_memsz, file->endian))
 	{
-		ft_bzero(woody->ptr + *inject_index, get_uint32(woody->data_32->p_memsz,
+		ft_memset(woody->ptr + *inject_index, 0, get_uint32(woody->data_32->p_memsz,
 			file->endian) - get_uint32(woody->data_32->p_filesz, file->endian));
 		*inject_index += get_uint32(woody->data_32->p_memsz, file->endian)
 			- get_uint32(woody->data_32->p_filesz, file->endian);
@@ -116,7 +116,7 @@ static void		create_woody(t_file *file, t_woody *woody, size_t *inject_index)
 	if (woody->data && get_uint64(woody->data->p_filesz, file->endian)
 		!= get_uint64(woody->data->p_memsz, file->endian))
 	{
-		ft_bzero(woody->ptr + *inject_index, get_uint64(woody->data->p_memsz,
+		ft_memset(woody->ptr + *inject_index, 0, get_uint64(woody->data->p_memsz,
 			file->endian) - get_uint64(woody->data->p_filesz, file->endian));
 		*inject_index += get_uint64(woody->data->p_memsz, file->endian)
 			- get_uint64(woody->data->p_filesz, file->endian);

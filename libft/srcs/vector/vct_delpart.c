@@ -18,7 +18,7 @@ int		vct_delpart(t_vector *vct, unsigned int i, unsigned int len)
 		return (EXIT_FAILURE);
 	if (i + len > vct->len)
 	{
-		ft_bzero(vct->value + i, vct->len - i);
+		ft_memset(vct->value + i, 0, vct->len - i);
 		vct->len = i;
 		return (EXIT_SUCCESS);
 	}
