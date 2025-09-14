@@ -24,7 +24,7 @@ void		encrypt_code(t_file *file)
 	uint32_t	text_size;
 	uint32_t	key_size;
 
-	if (!(file->text = get_segment(file, is_text)))
+	if (!(file->text = get_ph_segment(file, is_text_segment)))
 		return (safe_exit(file, NULL, NULL, "program headers extends past the end of the file."));
 	((Elf64_Phdr *)file->text)->p_flags |= PF_W;
 	text = file->ptr + get_uint64(((Elf64_Phdr *)file->text)->p_offset,

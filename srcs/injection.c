@@ -77,7 +77,7 @@ void			inject(t_file *file, t_payload *payload)
 
 	if (!(woody.last = get_last_load_segment(file)))
 		return (safe_exit(file, payload, NULL, "program headers extends past the end of the file."));
-	woody.data = get_segment(file, is_data);
+	woody.data = get_ph_segment(file, is_data_segment);
 	if (!woody.data)
 		woody.data = woody.last;
 	woody.size = get_uint64(woody.last->p_offset, file->endian)
