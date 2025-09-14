@@ -25,10 +25,7 @@ typedef uint16_t	t_endian;
 
 # define KEY_SIZE 32
 
-# define ERROR_ERRNO 0
-# define ERROR_PH_TRUNC 1
-# define ERROR_TEXT_TRUNC 2
-# define ERROR_ARGS 3
+typedef enum { false, true } bool;
 
 typedef struct		s_file
 {
@@ -80,9 +77,9 @@ int					is_text_32(Elf32_Phdr *phdr);
 int					is_data_32(Elf32_Phdr *phdr);
 void				inject(t_file *file, t_payload *payload);
 void				encrypt_code(t_file *file);
-int					check_file(char *filename, t_file *file);
-void				woody_error(t_file *file, t_payload *payload,
-						t_woody *woody, int code);
+void					parse_file(char *filename, t_file *file);
+void				safe_exit(t_file *file, t_payload *payload,
+						t_woody *woody, char* msg);
 
 size_t			ft_strlen(const char *s);
 void			ft_strdel(char **as);

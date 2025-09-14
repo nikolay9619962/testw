@@ -11,15 +11,19 @@ static t_payload	get_payload()
 	return (payload);
 }
 
-int					main(int ac, char **av)
+int					main(int argc, char **argv)
 {
 	t_file		file;
 	t_payload	payload;
 
-	ft_memset(&file, 0, sizeof(t_file));
+	if (argc != 2)
+		safe_exit(NULL, NULL, NULL, "usage: ./woody_woodpacker <filename>\n");
+
 	errno = 0;
-	if (ac != 2 || check_file(av[1], &file) == EXIT_FAILURE)
-		woody_error(&file, NULL, NULL, !errno ? ERROR_ARGS : ERROR_ERRNO);
+	ft_memset(&file, 0, sizeof(t_file));
+	parse_file(argv[1], &file);
+
+	
 	encrypt_code(&file);
 	payload = get_payload();
 	inject(&file, &payload);

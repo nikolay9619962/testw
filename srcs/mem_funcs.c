@@ -3,13 +3,21 @@
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	size_t	i;
+	unsigned char *a;
+	unsigned char *b;
 
-	i = -1;
 	if (n == 0)
 		return (0);
-	while (++i < n)
-		if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
-			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
+
+	a = (unsigned char *)s1;
+	b = (unsigned char *)s2;
+	i = 0;
+	while (i < n)
+	{
+		if (a[i] != b[i])
+			return (a[i] - b[i]);
+		i++;
+	}
 	return (0);
 }
 

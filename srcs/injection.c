@@ -76,7 +76,7 @@ void			inject(t_file *file, t_payload *payload)
 	size_t		inject_index;
 
 	if (!(woody.last = get_last_load_segment(file)))
-		return (woody_error(file, payload, NULL, ERROR_PH_TRUNC));
+		return (safe_exit(file, payload, NULL, "program headers extends past the end of the file."));
 	woody.data = get_segment(file, is_data);
 	if (!woody.data)
 		woody.data = woody.last;
@@ -85,7 +85,7 @@ void			inject(t_file *file, t_payload *payload)
 		+ (woody.data->p_memsz - woody.data->p_filesz);
 	errno = 0;
 	if (!(woody.ptr = malloc(woody.size)))
-		return (woody_error(file, payload, &woody, ERROR_ERRNO));
+		return (safe_exit(file, payload, &woody, NULL));
 	format_payload(file, payload, get_uint64(woody.last->p_vaddr, file->endian)
 		+ get_uint64(woody.last->p_memsz, file->endian));
 	create_woody(file, &woody, &inject_index);
@@ -96,6 +96,6 @@ void			inject(t_file *file, t_payload *payload)
 	woody.last->p_memsz += get_uint64(payload->size, file->endian);
 	woody.last->p_flags |= PF_X;
 	if (save_file(woody.ptr, woody.size) == EXIT_FAILURE)
-		return (woody_error(file, payload, &woody, ERROR_ERRNO));
+		return (safe_exit(file, payload, &woody, NULL));
 	free(woody.ptr);
 }

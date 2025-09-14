@@ -6,7 +6,7 @@ static void	get_key(t_file *file)
 	int		i;
 
 	if ((fd = open("/dev/urandom", O_RDONLY)) == -1)
-		return (woody_error(file, NULL, NULL, ERROR_ERRNO));
+		return (safe_exit(file, NULL, NULL, NULL));
 	read(fd, file->key, KEY_SIZE);
 	close(fd);
 	ft_putstr("encryption key : 0x");
@@ -25,7 +25,7 @@ void		encrypt_code(t_file *file)
 	uint32_t	key_size;
 
 	if (!(file->text = get_segment(file, is_text)))
-		return (woody_error(file, NULL, NULL, ERROR_PH_TRUNC));
+		return (safe_exit(file, NULL, NULL, "program headers extends past the end of the file."));
 	((Elf64_Phdr *)file->text)->p_flags |= PF_W;
 	text = file->ptr + get_uint64(((Elf64_Phdr *)file->text)->p_offset,
 		file->endian);
@@ -34,6 +34,6 @@ void		encrypt_code(t_file *file)
 	key = &file->key;
 	key_size = KEY_SIZE;
 	if (text < file->ptr || text > file->end || text + text_size > file->end)
-		return (woody_error(file, NULL, NULL, ERROR_TEXT_TRUNC));
+		return (safe_exit(file, NULL, NULL, "text segment extends past the end of the file."));
 	encrypt(key, key_size, text, text_size);
 }
