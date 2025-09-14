@@ -10,7 +10,7 @@ SRCS_DIR = ./srcs/
 INCLUDES = $(INCLUDES_DIR)
 OBJS_DIR = ./.objs/
 
-SRC_FILES = main.c check_file.c error.c endian.c encryption.c segment.c injection.c str_funcs.c mem_funcs.c
+SRC_FILES = main.c parser.c endian.c encryption.c segment.c injection.c str_funcs.c mem_funcs.c
 ASM_FILES = encrypt.s
 OBJ_FILES = $(SRC_FILES:.c=.o)
 OBJ_FILES += $(ASM_FILES:.s=.o)
