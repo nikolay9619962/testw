@@ -6,7 +6,7 @@ static void	get_key(t_file *file)
 	int		i;
 
 	if ((fd = open("/dev/urandom", O_RDONLY)) == -1)
-		return (safe_exit(file, NULL, NULL, NULL));
+		return (safe_exit(file, NULL, NULL, "Failed to open /dev/urandom\n"));
 	read(fd, file->key, KEY_SIZE);
 	close(fd);
 	ft_putstr("encryption key : 0x");
