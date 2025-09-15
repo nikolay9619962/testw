@@ -1,5 +1,5 @@
-segment .text
-	global encrypt
+section .text
+global encrypt
 
 encrypt:	; void encrypt(void *data, size_t data_len, void *text, size_t text_len);
 			; 				rdi			rsi					rdx			rcx

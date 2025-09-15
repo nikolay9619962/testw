@@ -1,4 +1,3 @@
-; decrypt.s
 section .text
 global decrypt
 global decrypt_size
