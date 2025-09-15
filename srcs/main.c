@@ -8,8 +8,7 @@ static t_payload	get_payload()
 {
 	t_payload	payload;
 	
-	size_t size = (size_t)decrypt_size + 132;
-	printf("Payload size: %zu bytes\n", size);
+	size_t size = (size_t)decrypt_size + KEY_SIZE;
 	payload = (t_payload){
 		.code = malloc(size),
 		.size = size,
