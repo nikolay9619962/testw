@@ -9,17 +9,21 @@ static t_payload	get_payload()
 	t_payload	payload;
 	
 	size_t size = (size_t)decrypt_size + KEY_SIZE;
-	payload = (t_payload){
-		.code = malloc(size),
-		.size = size,
-		.i_tsize = 0x1e,
-		.i_ksize = 0x23,
-		.i_text = 0x2a,
-		.i_key = 0x78,
-		.i_jmp = 0x5c
-	};
+	payload.code = malloc(size);
+	if (!payload.code)
+	{
+		printf("Failed to allocate payload memory\n");
+		return (t_payload){0};
+	}
 	
-	ft_memcpy(payload.code, decrypt, size);
+	payload.size = size;
+	payload.i_tsize = 0x1e;
+	payload.i_ksize = 0x23;
+	payload.i_text = 0x2a;
+	payload.i_key = 0x78;
+	payload.i_jmp = 0x5c;
+	
+	ft_memcpy(payload.code, decrypt, (size_t)decrypt_size);
 	return (payload);
 }
 
@@ -52,10 +56,15 @@ int					main(int argc, char **argv)
 
 	errno = 0;
 	ft_memset(&file, 0, sizeof(t_file));
+	ft_memset(&payload, 0, sizeof(t_payload));
+	
 	parse_file(argv[1], &file);
-
 	encrypt_code(&file);
+	
 	payload = get_payload();
+	if (!payload.code)
+		safe_exit(&file, NULL, NULL, "Failed to create payload");
+	
 	inject(&file, &payload);
 	ft_strdel(&payload.code);
 	
@@ -64,6 +73,6 @@ int					main(int argc, char **argv)
 		munmap(file.ptr, file.size);
 	if (file.fd)
 		close(file.fd);
-		
+
 	return (0);
 }

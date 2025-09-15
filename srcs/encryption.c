@@ -14,8 +14,8 @@ static void	get_key(t_file *file)
 	}
 	close(fd);
 	
-	ft_putstr("encryption key : 0x");
-	printf("%016lx", file->key);
+	ft_putstr("key_value: ");
+	printf("%016lX", file->key);  // Изменено на заглавные буквы и формат как в примере
 	fflush(stdout);
 	ft_putstr("\n");
 }
