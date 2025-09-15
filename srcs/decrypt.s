@@ -19,7 +19,7 @@ end_code:
     mov rdx, 14
     syscall
     mov rcx, 43 ; text_size
-    mov rsi, 4 ; key_size 
+    mov rsi, 8 ; key_size = 8 байт (64 бита)
     lea rdx, [rel routine] ; text
     xor r8, r8 ; key_index
     xor rax, rax ; key_offset
@@ -56,7 +56,7 @@ woody:
 
 key:
     call back_key
-    key_str: db "1234"
+    key_str: dq 0 ; 8 байт для 64-битного ключа
 
 decrypt_end:
 decrypt_size: dq decrypt_end - decrypt

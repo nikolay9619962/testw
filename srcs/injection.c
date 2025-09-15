@@ -34,7 +34,7 @@ static void	format_payload(t_file *file, t_payload *payload,
 	key_size = KEY_SIZE;
 	ft_memcpy(payload->code + payload->i_tsize, &filesz, sizeof(uint32_t));
 	ft_memcpy(payload->code + payload->i_ksize, &key_size, sizeof(uint32_t));
-	ft_memcpy(payload->code + payload->i_key, &file->key, KEY_SIZE);
+	ft_memcpy(payload->code + payload->i_key, &file->key, KEY_SIZE);  // Копируем 8 байт
 	ft_memcpy(payload->code + payload->i_text, &rel_text, sizeof(int32_t));
 	ft_memcpy(payload->code + payload->i_jmp, &rel_entry, sizeof(int32_t));
 }

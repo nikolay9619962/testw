@@ -16,7 +16,7 @@ typedef uint16_t	t_endian;
 # define LENDIAN ELFDATA2LSB
 # define BENDIAN ELFDATA2MSB
 
-# define KEY_SIZE 32
+# define KEY_SIZE 8  // 64 бита = 8 байт
 
 extern void decrypt(void);
 extern uint64_t decrypt_size;
@@ -29,7 +29,7 @@ typedef struct		s_file
 	void		*end;
 	void		*text;
 	void		*note;
-	char		key[KEY_SIZE];
+	uint64_t	key;  // Изменено на uint64_t
 	off_t		size;
 	t_arch		arch;
 	t_endian	endian;

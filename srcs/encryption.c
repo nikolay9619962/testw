@@ -3,17 +3,20 @@
 static void	get_key(t_file *file)
 {
 	int		fd;
-	int		i;
 
 	if ((fd = open("/dev/urandom", O_RDONLY)) == -1)
 		return (safe_exit(file, NULL, NULL, "Failed to open /dev/urandom\n"));
-	read(fd, file->key, KEY_SIZE);
+	
+	if (read(fd, &file->key, KEY_SIZE) != KEY_SIZE)
+	{
+		close(fd);
+		safe_exit(file, NULL, NULL, "Failed to read random key\n");
+	}
 	close(fd);
+	
 	ft_putstr("encryption key : 0x");
-	i = -1;
-	while (++i < KEY_SIZE)
-		printf("%02hhx", file->key[i]);
-	fflush(NULL);
+	printf("%016lx", file->key);
+	fflush(stdout);
 	ft_putstr("\n");
 }
 
